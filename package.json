@@ -1,0 +1,26 @@
+{
+  "name": "fb-calendar",
+  "version": "0.1.0",
+  "description": "Facebook Coding Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EggDice/fb-calendar.git"
+  },
+  "keywords": [
+    "facebook",
+    "assignment"
+  ],
+  "author": "Tamas Kokeny @EggDice <tamas.kokeny.87@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EggDice/fb-calendar/issues"
+  },
+  "homepage": "https://github.com/EggDice/fb-calendar",
+  "devDependencies": {
+    "jest-cli": "^0.4.0"
+  }
+}
