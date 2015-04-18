@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * Calculates collisions between events, and based on these collisions groups
+ * them.
+ *
+ * @param Array({start: number, end: number}) events The list of events.
+ * @return Array(Array({start: number, end: number})) The list of groups.
+ */
 function getCollidedGroups(events) {
   return events
     .sort(_compareEvents)
