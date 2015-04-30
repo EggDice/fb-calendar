@@ -1,5 +1,10 @@
 'use strict';
 
+var utils = require('./utils');
+var last = utils.last;
+var isLaterThan = utils.isLaterThan;
+var buildClustersBy = utils.buildClustersBy;
+
 /**
  * Calculates collisions between events, and based on these collisions groups
  * them.
@@ -8,36 +13,24 @@
  * @return Array(Array({start: number, end: number})) The list of groups.
  */
 function getCollidedGroups(events) {
-  return events
-    .sort(_compareEvents)
-    .reduce(_reduceToGroups, []);
+  var sortedEvents = events.sort(_compareEvents);
+  return buildClustersBy(sortedEvents, _getLastOverlappedGroup);
 }
 
 function _compareEvents(a, b) {
   return a.start === b.start ? a.end - b.end : a.start - b.start;
 }
 
-function _reduceToGroups(groups, event) {
-  var lastGroup = _last(groups) || [];
-  var lastEvent = _last(lastGroup);
-  if (_isNotOverlap(event, lastEvent)) {
-    groups.push([event]);
-  } else {
-    lastGroup.push(event);
-  }
-  return groups;
+function _getLastOverlappedGroup(groups, event) {
+  var lastGroup = last(groups);
+  return _isOverlap(event, last(lastGroup)) ? lastGroup : null;
 }
 
-function _isNotOverlap(event1, event2) {
+function _isOverlap(event1, event2) {
   if (event1 && event2) {
-    return event1.end <= event2.start || event1.start >= event2.end;
+    return !isLaterThan(event1, event2) && !isLaterThan(event2, event1);
   }
-  return true;
-}
-
-function _last(array) {
-  var length = array ? array.length : 0;
-  return length ? array[length - 1] : undefined;
+  return false;
 }
 
 module.exports = getCollidedGroups;

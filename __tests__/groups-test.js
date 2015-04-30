@@ -1,8 +1,9 @@
 'use strict';
 
-jest.dontMock('../groups');
+jest.autoMockOff();
 
 var getCollidedGroups = require('../groups');
+var getNormalEvent = require('./get-normal-event');
 
 describe('groups', function() {
   it('should return no groups', function() {
@@ -95,13 +96,6 @@ function exec(simplifiedEvents) {
 
 function getGroupCount(simplifiedEvents) {
   return exec(simplifiedEvents).length;
-}
-
-function getNormalEvent(simplifiedEvent) {
-  return {
-    start: simplifiedEvent[0],
-    end: simplifiedEvent[1]
-  };
 }
 
 function getNormalGroups(simplifiedGroups) {
