@@ -3,7 +3,7 @@
 jest.autoMockOff();
 
 
-var generateCalendar = require('../calendar');
+var calendarFactory = require('../calendar');
 var getNormalEvent = require('./get-normal-event');
 
 describe('index', function() {
@@ -11,7 +11,7 @@ describe('index', function() {
     expect(exec([])).toEqual([]);
   });
 
-  it('should return an event', function() {
+  it('should handle multiple events', function() {
     expect(exec([
       [0, 60], [30, 90], [60, 120], [90, 150]
     ])).toEqual([{
@@ -40,7 +40,7 @@ describe('index', function() {
 
 function exec(simplifiedEvents) {
   var events = simplifiedEvents.map(getNormalEvent);
-  var calendar = generateCalendar({
+  var calendar = calendarFactory({
     width: 600,
     height: 720
   });

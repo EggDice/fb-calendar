@@ -1,13 +1,27 @@
 'use strict';
 
-function generateRender(options) {
+/**
+ * Returns a renderer instance.
+ *
+ * @param {{element: DomElement, template: string}} options
+ * 
+ * @return {Renderer}
+ */
+function rendererFactory(options) {
   var element = options.element;
   var template = options.template;
 
+  /**
+   * Renders events by position details into the DOM element's innerHTML.
+   *
+   * @param {Array<positions>} events
+   */
   function render(events) {
-    element.innerHTML = events.reduce(function(html, event) {
-      return html + _renderElement(event);
-    }, '');
+    element.innerHTML = events.reduce(_appendRenderedElement, '');
+  }
+
+  function _appendRenderedElement(html, event) {
+    return html + _renderElement(event);
   }
 
   function _renderElement(event) {
@@ -24,5 +38,5 @@ function generateRender(options) {
   return render;
 }
 
-module.exports = generateRender;
+module.exports = rendererFactory;
 

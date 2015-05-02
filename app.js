@@ -1,7 +1,7 @@
 'use strict';
 
-var generateCalendar = require('./calendar');
-var generateRender = require('./render');
+var calendarFactory = require('./calendar');
+var rendererFactory = require('./render');
 
 var TEMPLATE = 
   '<div ' +
@@ -17,17 +17,29 @@ var TEMPLATE =
     '</div>' +
   '</div>';
 
-function generateApp(options) {
+/**
+ * Returns an app instance.
+ * 
+ * @param {{element: DomElement, height: number, width: number}} options
+ *
+ * @return {App} The app instance
+ */
+function appFactory(options) {
   var element = options.element;
-  var calendar = generateCalendar({
+  var calendar = calendarFactory({
     width: options.width,
     height: options.height
   });
-  var renderer = generateRender({
+  var renderer = rendererFactory({
     element: element,
     template: TEMPLATE
   });
 
+  /**
+   * Renders events to the DOM element.
+   *
+   * @param {Array<event>} List of the rendered events
+   */
   function render(events) {
     var positions = calendar(events);
     renderer(positions);
@@ -38,4 +50,4 @@ function generateApp(options) {
   };
 }
 
-module.exports = generateApp;
+module.exports = appFactory;

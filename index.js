@@ -1,14 +1,19 @@
 'use strict';
 
-var generateApp = require('./app');
+var appFactory = require('./app');
 
 document.addEventListener('DOMContentLoaded', function(event) { 
-  var app = generateApp({
+  var app = appFactory({
     width: 600,
     height: 720,
     element: document.getElementsByClassName('day')[0]
   });
 
+  /**
+   * Exposed main function, takes events.
+   *
+   * @param {Array<event>} events
+   */
   window.layOutDay = function(events) {
     app.render(events);
   };

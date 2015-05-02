@@ -2,16 +2,23 @@
 
 var utils = require('./utils');
 var last = utils.last;
-var isLaterThan = utils.isLaterThan;
+var isAfter = utils.isAfter;
 var buildClustersBy = utils.buildClustersBy;
 
+/**
+ * Takes a group af collided events and returns them in columns.
+ *
+ * @param {Array<event>} group - A group off collided events.
+ * 
+ * @return {Array<Array<event>>}
+ */
 function getColumns(group) {
   return buildClustersBy(group, _findFirstColumnWithEmptyPlace);
 }
 
 function _findFirstColumnWithEmptyPlace(columns, event) {
   return _find(columns, function(column) {
-    return isLaterThan(last(column), event);
+    return isAfter(last(column), event);
   });
 }
 

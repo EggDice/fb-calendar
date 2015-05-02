@@ -2,7 +2,7 @@
 
 var utils = require('./utils');
 var last = utils.last;
-var isLaterThan = utils.isLaterThan;
+var isAfter = utils.isAfter;
 var buildClustersBy = utils.buildClustersBy;
 
 /**
@@ -28,7 +28,7 @@ function _getLastOverlappedGroup(groups, event) {
 
 function _isOverlap(event1, event2) {
   if (event1 && event2) {
-    return !isLaterThan(event1, event2) && !isLaterThan(event2, event1);
+    return !isAfter(event1, event2) && !isAfter(event2, event1);
   }
   return false;
 }

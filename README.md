@@ -32,9 +32,18 @@ idempotent.
 In your submission, please implement the calendar with the following input:
 
 ```js
-[ {start: 30, end: 150}, {start: 540, end: 600}, {start: 560, end: 620}, {start: 610, end: 670} ];
+[
+  {start: 30, end: 150},
+  {start: 540, end: 600},
+  {start: 560, end: 620},
+  {start: 610, end: 670}
+];
 ```
 
 ## Solution
 I implemented the task without using any third party library, for testing I
 used jest.
+
+the events are flowing through on a linear process.
+
+raw events -> detect collided groups -> determine columns -> determine event positions -> render events

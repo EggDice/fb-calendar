@@ -20,9 +20,9 @@ describe('last', function() {
 
 describe('isLaterThan', function() {
   it('should give true only if the second event is later', function() {
-    expect(utils.isLaterThan({start: 0, end: 60}, {start: 60, end: 120}));
-    expect(utils.isLaterThan({start: 0, end: 60}, {start: 90, end: 150}));
-    expect(utils.isLaterThan({start: 0, end: 60}, {start: 30, end: 90}));
+    expect(utils.isAfter({start: 0, end: 60}, {start: 60, end: 120}));
+    expect(utils.isAfter({start: 0, end: 60}, {start: 90, end: 150}));
+    expect(utils.isAfter({start: 0, end: 60}, {start: 30, end: 90}));
   });
 });
 

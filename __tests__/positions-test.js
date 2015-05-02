@@ -2,12 +2,12 @@
 
 jest.autoMockOff();
 
-var positionsGenerator = require('../positions');
+var positionsFactory = require('../positions');
 var defaultBoardDetails = {
   width: 600,
   height: 720
 };
-var getPositions = positionsGenerator(defaultBoardDetails);
+var getPositions = positionsFactory(defaultBoardDetails);
 
 describe('positions', function() {
   it('should return empty array', function() {
@@ -81,7 +81,7 @@ describe('positions', function() {
   });
 
   it('should handle different width', function() {
-    var getPositions = positionsGenerator({
+    var getPositions = positionsFactory({
       width: 400,
       height: 720
     });
@@ -96,7 +96,7 @@ describe('positions', function() {
   });
 
  it('should handle different height', function() {
-    var getPositions = positionsGenerator({
+    var getPositions = positionsFactory({
       width: 600,
       height: 360
     });
