@@ -1,9 +1,7 @@
 'use strict';
 
-jest.autoMockOff();
-
 var getCollidedGroups = require('../groups');
-var getNormalEvent = require('./get-normal-event');
+var getNormalEvent = require('../get-normal-event');
 
 describe('groups', function() {
   it('should return no groups', function() {

@@ -1,7 +1,5 @@
 'use strict';
 
-jest.autoMockOff();
-
 var positionsFactory = require('../positions');
 var defaultBoardDetails = {
   width: 600,

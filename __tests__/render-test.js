@@ -1,7 +1,5 @@
 'use strict';
 
-jest.autoMockOff();
-
 var rendererFactory = require('../render');
 
 var mockElement = {
@@ -34,7 +32,7 @@ describe('render', function() {
     expect(mockElement.innerHTML).toBe('e 0 600');
   });
 
-  it('should create multiple elements', function() { 
+  it('should create multiple elements', function() {
     var render = getRenderer('e');
     render([
       {top: 0, left: 0, width: 600, height: 60},

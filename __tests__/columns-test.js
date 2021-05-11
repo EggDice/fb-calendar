@@ -1,8 +1,6 @@
 'use strict';
 
-jest.autoMockOff();
-
-var getNormalEvent = require('./get-normal-event');
+var getNormalEvent = require('../get-normal-event');
 var getColumns = require('../columns');
 
 describe('columns', function() {

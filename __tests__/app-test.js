@@ -1,7 +1,5 @@
 'use strict';
 
-jest.autoMockOff();
-
 var generateApp = require('../app');
 
 var mockElement = {

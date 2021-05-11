@@ -1,10 +1,8 @@
 'use strict';
 
-jest.autoMockOff();
-
 
 var calendarFactory = require('../calendar');
-var getNormalEvent = require('./get-normal-event');
+var getNormalEvent = require('../get-normal-event');
 
 describe('index', function() {
   it('should return an empty list', function() {
